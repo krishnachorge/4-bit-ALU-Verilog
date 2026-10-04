@@ -1,23 +1,5 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 09/26/2026 01:48:22 PM
-// Design Name: 
-// Module Name: four_bit_adder
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+
 
 
 module four_bit_adder(
@@ -29,9 +11,10 @@ module four_bit_adder(
     );
     
     wire c1,c2,c3;
-     full_adder_using_half_adders fa0(A[0],B[0],Sum[0],c1);
-      full_adder_using_half_adders fa1(A[1],B[1],c1,Sum[1],c2);
-       full_adder_using_half_adders fa2(A[2],B[2],c2,Sum[2],c3);
-        full_adder_using_half_adders fa3(A[3],B[3],c3,Sum[3],Cout);
+  full_adder_using_half_adders fa0(.A(A[0]), .B(B[0]), .Cin(Cin), .sum(Sum[0]), .carry(c1));
+    full_adder_using_half_adders fa1(.A(A[1]), .B(B[1]), .Cin(c1),  .sum(Sum[1]), .carry(c2));
+    full_adder_using_half_adders fa2(.A(A[2]), .B(B[2]), .Cin(c2),  .sum(Sum[2]), .carry(c3));
+    full_adder_using_half_adders fa3(.A(A[3]), .B(B[3]), .Cin(c3),  .sum(Sum[3]), .carry(Cout));
+
     
 endmodule
